@@ -1,16 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-const Note = (props) => {
-    const {title, description} = props;
-    return (
-        <div className="card p-2 mb-2">
-            <div className="card-body">
-                <h3 className="card-title">{title}</h3>
-                <p className="card-text">{description}</p>
+// const Note = (props) => {
+//     const {title,description} = props;
+//     return (
+//         <div className="card p-2 mb-2">
+//             <div className="card-body">
+//                 <h3 className="card-title">{title}</h3>
+//                 <p className="card-text">{description}</p>
+//                 </div>
+//         </div>
+//     );
+// };
+
+
+class Note extends Component {
+    render() {
+        const { title, description } = this.props;
+        return (
+            <div className="card p-2 mb-2">
+                <div className="card-body">
+                    <h3 className="card-title">{title}</h3>
+                    <p className="card-text">{description}</p>
                 </div>
-        </div>
-    );
-};
+            </div>
+        )
+    }
+}
+
+
 
 export default Note;
