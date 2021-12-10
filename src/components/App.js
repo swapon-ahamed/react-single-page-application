@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navigation from './Navigation';
 import Notes from './Notes';
+import AddNote from './AddNote';
 import Footer from './Footer';
 
 
@@ -35,11 +36,19 @@ class App extends Component {
       }
     ]
   }
+
+addNote = note => {
+  this.setState({
+    notes: [...this.state.notes, note]
+  })
+};
+
   render() {
     return (
       <div>
         <Navigation />
         <Notes notes={this.state.notes} />
+		    <AddNote addNote={this.addNote}/>
         <Footer />
       </div>
     );
