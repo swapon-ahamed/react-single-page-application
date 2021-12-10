@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import {Routes, Route } from 'react-router-dom';
 import Navigation from './Navigation';
 import Notes from './Notes';
 import AddNote from './AddNote';
 import Footer from './Footer';
+import About from './About';
+import NotFound from './NotFound';
+
+
+
 
 
 // function App() {
@@ -17,6 +24,7 @@ import Footer from './Footer';
 // }
 
 class App extends Component {
+ 
   state = {
     notes: [
       {
@@ -37,18 +45,31 @@ class App extends Component {
     ]
   }
 
+
 addNote = note => {
   this.setState({
     notes: [...this.state.notes, note]
   })
 };
 
+// removeNote = id => {
+//   this.setState({
+//     notes: this.state.notes.filter(note.id !==id)
+//   });
+// };
+
   render() {
     return (
+    
       <div>
         <Navigation />
-        <Notes notes={this.state.notes} />
-		    <AddNote addNote={this.addNote}/>
+       <Routes>
+         <Route path="/" element={<Notes notes={this.state.notes} />} />
+         <Route path="/add-note" element={<AddNote addNote={this.addNote}  />} />
+         <Route path="/about" element={<About/>} />
+         <Route path="*" element={<NotFound/>} />
+         
+       </Routes>
         <Footer />
       </div>
     );

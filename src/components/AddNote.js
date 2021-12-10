@@ -8,7 +8,8 @@ class AddNote extends Component {
         id: uuid(),
         title: '',
         description: '',
-        errors: {}
+        errors: {},
+        redirectToReferrer: false
     };
 
     handleChange = e => {
@@ -19,7 +20,7 @@ class AddNote extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log(this.state);
+
         if (this.state.title === '') {
             this.setState({
                 errors: {
@@ -41,16 +42,18 @@ class AddNote extends Component {
         }
 
         this.props.addNote(this.state);
+
+    
         this.setState({
             id: '',
             title: '',
             description: '',
-            errors: {}
+            errors: {},
+             redirectToReferrer: true
         });
 
 
     };
-
 
     render() {
 
